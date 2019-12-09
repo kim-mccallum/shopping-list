@@ -27,25 +27,24 @@ function handleAdditions() {
 
 // 2. Remove items from the list
 function handleRemovals() {
-    $(".shopping-item-delete").click(event => {
+    // Event delegation to handle added items
+    $("ul").on( "click", ".shopping-item-delete", function( event ) {
         $(event.currentTarget).closest('li').remove();
     });
 }
 
 // 3. Check item on the list 
-
 function handleCheckItems() {
-    // listen for click on 'check'
-    $(".shopping-item-toggle").click(event => {
-        // callback fn should find closest label (list item) toggle class
-        $(event.currentTarget).closest("li").find(".shopping-item").toggleClass("shopping-item__checked");
+    // Event delegation
+    $("ul").on( "click", ".shopping-item-toggle", function( event ) {
+        // callback fn should find closest label (list item) and toggle class
+        $(this).closest("li").find(".shopping-item").toggleClass("shopping-item__checked");
     });
 }
 //////////////// Run the handlerFunctions ////////////////
+
+// PROBLEM HERE: The added items are not 'heard'... EVENT DELEGATION ISSUE? 
 handleAdditions();
 handleRemovals();
 handleCheckItems();
-
-
-
 
