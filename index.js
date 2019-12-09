@@ -9,14 +9,27 @@
 function handleAdditions() {
     $("#js-shopping-list-form > button").click(event => {
         event.preventDefault();
-        // Get the text input
-        debugger;
-        const userTextElement = $('#shopping-list-entry').val();
+        
+        // Get the text input        
+        let userTextElement = $('#shopping-list-entry').val();
+        console.log(userTextElement)
+        // debugger;
 
         // Insert a new element into the ul class="shopping-list"
         // Use a template literal to build out the HTML
-        // sub in the userTextElement in there!!! YAY!!! 
-        $("ul").append("li")
+        // sub in the userTextElement in there!!! YAY!!!
+
+        $("ul").append(`<li>
+            <span class="shopping-item">${userTextElement}</span>
+            <div class="shopping-item-controls">
+            <button class="shopping-item-toggle">
+                <span class="button-label">check</span>
+            </button>
+            <button class="shopping-item-delete">
+                <span class="button-label">delete</span>
+            </button>
+            </div>
+        </li>`);
 
     });
 
